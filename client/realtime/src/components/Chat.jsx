@@ -89,7 +89,8 @@ const Chat = ({ socket, roomId, participants }) => {
     setIsSummarizing(true);
     setSummary(null);
     try {
-      const response = await fetch('http://localhost:3001/api/summarize', {
+      const serverUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+      const response = await fetch(`${serverUrl}/api/summarize`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

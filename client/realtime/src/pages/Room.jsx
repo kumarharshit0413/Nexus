@@ -73,7 +73,8 @@ const Room = () => {
   useEffect(() => {
     if (!hasJoined) return;
 
-    const socket = io('http://localhost:3001');
+    const serverUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+    const socket = io(serverUrl);
     socketRef.current = socket;
 
     const createPeerConnection = (targetSocketId, stream) => {
